@@ -3,15 +3,15 @@ pipeline {
 
 
 	environment {
-		$APPLI = mon_projet_semi_complet
+		APPLI = "docksaficio/mon_projet_semi_complet"
 	}
 
 
 	parameters {
 		string(
-			name: 'DATE et HEURE',
-			defaultvalue: 'Début',
-			description: 'Quelle est la date et l'heure du push ?'
+			name: "DATE_HEURE",
+			defaultValue: "20-07-2026",
+			description: "Quelle est la date et l'heure du push ?"
 		)
 	}
 
@@ -19,34 +19,34 @@ pipeline {
 	stages {
 
 
-                stage('BUILD') {
+                stage("BUILD") {
 
                         steps {
-                                sh 'docker build -t ${APPLI}:${params.DATE ET HEURE} .'
+                                sh "docker build -t ${APPLI}:${params.DATE_HEURE} ."
                         }
                 }
 
 
-		stage('Credentials') {
+		stage("Credentials") {
 		
 			steps {
 				withCredentials([
 					usernamePassword(
-						credentialsId: 'MaCoToDocker',
-						usernameVariable: 'MonUSR',
-						passwordVariable: 'MonPSWD'
+						credentialsId: "MaCoToDocker",
+						usernameVariable: "MonUSR",
+						passwordVariable: "MonPSWD"
 					)
 				])	
 					{
-						sh 'echo $MonPSWD | docker login -u $MonUSR --passwrd-stdin'		
+						sh "echo $MonPSWD | docker login -u $MonUSR --password-stdin"		
 					}		
 			}
 		}
 
-		stage('push') {
+		stage("push") {
 
 			steps {
-				sh 'docker push ${APPLI}:${params.DATE ET HEURE}'
+				sh "docker push ${APPLI}:${params.DATE_HEURE}"
 
 			}
 		}
@@ -55,15 +55,15 @@ pipeline {
 
 		post {
 			success {
-				echo 'Bien ouej'
+				echo "Bien ouej"
 			}
 			
 			failure {
-				echo 'retour case depart'
+				echo "retour case depart"
 			}
 			
 			always {
-				echo 'fin du pipeline'
+				echo "fin du pipeline"
 			}
 		}
 }
