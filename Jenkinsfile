@@ -11,8 +11,9 @@ pipeline {
 		string(
 			name: 'DATE et HEURE',
 			defaultvalue: 'Début',
-			description: 'Quelle est la date et l'heure du push ?')
-		}
+			description: 'Quelle est la date et l'heure du push ?'
+		)
+	}
 
 
 	stages {
