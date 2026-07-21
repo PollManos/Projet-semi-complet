@@ -30,7 +30,7 @@ pipeline {
 				withCredentials([
 					usernamePassword(
 						credentialsId: "MaCoToDocker",
-						usernameVariable: "Username"
+						usernameVariable: "Username",
 						passwordVariable: "lebaysecret"
 						)
 				])
