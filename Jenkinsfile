@@ -8,9 +8,11 @@ pipeline {
 
 	
 	parameters {
-		name: "VERSION",
-                defaultValue: "v0",
-                description: "Quelle version on fait mon singe ?"
+		string( 
+                        name: "VERSION",
+                        defaultValue: "v0",
+                        description: "Quelle version on fait mon singe ?"
+)
 	}
 
 
