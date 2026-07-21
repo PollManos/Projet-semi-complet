@@ -3,7 +3,7 @@ pipeline {
 
 
 	environment {
-		MON_IMAGE = "docksaficio/Projet-semi-complet"
+		MON_IMAGE = "docksaficio/projet-semi-complet"
 		}
 
 	
