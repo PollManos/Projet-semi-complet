@@ -43,7 +43,7 @@ pipeline {
 		stage("PUSH") {
 		
 			steps {
-				sh "docker push ${MON_IMAGE}:{params.VERSION}"
+				sh "docker push ${MON_IMAGE}:${params.VERSION}"
 		
 			}
 
