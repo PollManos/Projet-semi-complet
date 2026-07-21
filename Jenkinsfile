@@ -32,7 +32,8 @@ pipeline {
 						credentialsId: "MaCoToDocker",
 						usernameVariable: "Username"
 						passwordVariable: "lebaysecret"
-			)])
+						)
+				])
 					{
 					sh "echo $lebaysecret | docker login -u $Username --password-stdin"
 					}
